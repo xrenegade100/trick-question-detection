@@ -1,7 +1,16 @@
 import isTrickQuestion from "./trickquestion";
+import getSentencesFromHtmlPage from "./dom";
 
-console.log(
-    isTrickQuestion(
-        "Uncheck the box on the right to subscribe to our newsletter"
-    )
-);
+(async () => {
+    const sentences = await getSentencesFromHtmlPage(
+        "https://www.very.co.uk/account/checkoutregister.page?"
+    );
+    const results: { sentence: string; score: number }[] = [];
+    sentences.forEach((sentence) => {
+        results.push({
+            sentence: sentence.substring(0, 100) + "...",
+            score: isTrickQuestion(sentence)
+        });
+    });
+    console.table(results);
+})();

@@ -1,4 +1,7 @@
 {
+  "name": "trick-question-detection",
+  "version": "1.0.0",
+  "author": "Antonio Scognamiglio <antonio.scognamiglio12@outlook.it>",
   "dependencies": {
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
@@ -24,8 +27,11 @@
     "typescript": "^4.7.4"
   },
   "scripts": {
-    "build": "tsc && node dist/",
+    "build": "tsc",
     "clean": "rimraf ./dist",
     "postinstall": "npm run build"
-  }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT"
 }
